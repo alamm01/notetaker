@@ -7,7 +7,8 @@ const path = require("path")
 // initialize the application
 const app = express()
 
-const PORT = 3001
+const PORT = 3001 || process.env.PORT
+
 
 
 
