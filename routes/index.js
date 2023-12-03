@@ -37,8 +37,19 @@ router.post('/notes', (req, res) => {
 
     const payload = {
         title, 
-        id: 
+        id: uuidv4(),
+        text,
     }
+
+// Boolean(req.body ) === true
+   if(req.body){
+    readAndAppend(payload, './db/db.json')
+    console.log(payload);
+
+    res.json("Message added....")
+   } else {
+    
+   }
 })
 
 // {
