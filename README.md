@@ -6,12 +6,15 @@ Note Taker is an application designed to help small business owners write and sa
 
 ## User Story
 
+AS A small business owner,
+I WANT to be able to write and save notes,
+SO THAT I can organize my thoughts and keep track of tasks I need to complete.
 
 ## Features
 
 - **Landing Page**: A welcoming page with a link to the notes page.
 - **Notes Page**: Displays existing notes on the left and provides an interface to create new notes on the right.
-- **Save & New Note Functionality**: Options to save new notes and create additional notes seamlessly.
+- **Save Delete & Add New Note Functionality**: Options to save new notes and create additional notes seamlessly.
 - **Persistent Storage**: Uses a `db.json` file for storing and retrieving notes.
 - **Unique Note Identification**: Each note is assigned a unique identifier for efficient management.
 
@@ -30,6 +33,7 @@ Note Taker is an application designed to help small business owners write and sa
   - `GET *`: Defaults to serving the `index.html` file.
   - `GET /api/notes`: Retrieves all notes as JSON from `db.json`.
   - `POST /api/notes`: Accepts a new note and appends it to `db.json`.
+  - `DELETE /api/notes/:id`: To allow users to delete notes.
 
 ### Deployment
 
@@ -46,27 +50,16 @@ Note Taker is an application designed to help small business owners write and sa
 
 The following GIF demonstrates the application's functionality:
 
-![Note Taker Demo](../notetaker/public/assets/image/screen.png)
-
-## Bonus Features
-
-- **DELETE Functionality**: For an added challenge, implement `DELETE /api/notes/:id` to allow users to delete notes.
-
-## Grading Criteria
-
-- **Technical Acceptance**: Meets all acceptance criteria with a functional front-to-back end connection.
-- **Deployment**: Live URL with a functioning application and GitHub code repository.
-- **Application Quality**: Error-free console operation.
-- **Repository Quality**: Organized with a unique name, descriptive commits, and a comprehensive README.
+![Note Taker Demo](../notetaker/public/assets/image/demo.gif)
 
 ## Project Links
 
-- Deployed Application: [Placeholder for deployed application URL]
-- GitHub Repository: [Placeholder for GitHub repository URL]
+- Deployed Application: [https://notetaker999-0af153472f58.herokuapp.com/]
+- GitHub Repository: [https://github.com/alamm01/notetaker]
 
 ## Screenshot
 
-![Application Screenshot](./Placeholder_for_screenshot.png)
+![Application Screenshot](../notetaker/public/assets/image/screen.png)
 
 - - -
-© 2023 [Your Name or Organization]. All Rights Reserved.
+© 2023 [Mohammad Alam]. All Rights Reserved.
