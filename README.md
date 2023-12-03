@@ -46,7 +46,7 @@ Note Taker is an application designed to help small business owners write and sa
 
 The following GIF demonstrates the application's functionality:
 
-![Note Taker Demo](./Assets/11-express-homework-demo.gif)
+![Note Taker Demo](../notetaker/public/assets/image/screen.png)
 
 ## Bonus Features
 
