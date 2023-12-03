@@ -1,9 +1,9 @@
 
 const router = require('express').Router()
 
-const { v4: uuidv4} = require('uuid');
+const { v4: uuidv4 } = require('uuid');
 
-const {readAndAppend, readFromFile, deleteNote} = require('../helpers/fsUtils')
+const { readAndAppend, readFromFile, deleteNote } = require('../helpers/fsUtils')
 
 
 const fs = require('fs')
@@ -33,23 +33,25 @@ router.post('/notes', (req, res) => {
     console.log(req.body);
 
 
-    const {title, text} = req.body
+    const { title, text } = req.body
 
     const payload = {
-        title, 
+        title,
         id: uuidv4(),
         text,
     }
 
-// Boolean(req.body ) === true
-   if(req.body){
-    readAndAppend(payload, './db/db.json')
-    console.log(payload);
+    // Boolean(req.body ) === true
+    if (req.body) {
+        readAndAppend(payload, './db/db.json')
+        console.log(payload);
 
-    res.json("Message added....")
-   } else {
-    
-   }
+        res.json("Message added....")
+    } else {
+        res.json({
+            message: "Objhect is valid, not logging, checking the code"
+        })
+    }
 })
 
 // {
@@ -57,7 +59,32 @@ router.post('/notes', (req, res) => {
 //     "text":"Test text"
 // }
 
+router.delete("/notes/:id", (req, res) => {
+    fs.readFile("db/db.json", (err, data) => {
+        if (err) throw err;
+        
+        let json = JSON.parse(data)
+        let notes = json.filter((note) => note.id !== req.params.id);
+
+        console.log(notes);
+
+        fs.writeFile("db/db.json", JSON.stringify(notes), function(err){
+            if(err) throw err;
+            res.redirect("/notes.html")
+        })
+
+    })
+})
 
 
+// let nums = [4, 5, 6, 7, 8, 90, 5, 3, 5, 6]
+
+// let filteredNum = nums.filter((num) => {
+//     if(num == 5){
+//         return num
+//     }
+// })
+
+// console.log(filteredNum);
 
 module.exports = router;
