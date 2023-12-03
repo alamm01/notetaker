@@ -5,12 +5,9 @@ const { v4: uuidv4 } = require('uuid');
 
 const { readAndAppend, readFromFile, deleteNote } = require('../helpers/fsUtils')
 
-
 const fs = require('fs')
 
-
 // GET Route for getting the text
-
 router.get('/notes', (req, res) => {
     readFromFile('./db/db.json').then((data) => {
         res.json(JSON.parse(data))
@@ -20,15 +17,6 @@ router.get('/notes', (req, res) => {
 
 // POST Route for error logging
 router.post('/notes', (req, res) => {
-    // const userdata = {};
-    // readAndAppend('./db/db.json').then((data) => {
-    //     userdata = res.json(JSON.parse(data))
-    //     res.append(userdata)
-    // })
-
-    ///////
-
-    // console.log(req);
 
     console.log(req.body);
 
@@ -40,7 +28,6 @@ router.post('/notes', (req, res) => {
         id: uuidv4(),
         text,
     }
-
     // Boolean(req.body ) === true
     if (req.body) {
         readAndAppend(payload, './db/db.json')
@@ -54,11 +41,7 @@ router.post('/notes', (req, res) => {
     }
 })
 
-// {
-//     "title":"Test Title",
-//     "text":"Test text"
-// }
-
+//DELETE route
 router.delete("/notes/:id", (req, res) => {
     fs.readFile("db/db.json", (err, data) => {
         if (err) throw err;
@@ -76,15 +59,5 @@ router.delete("/notes/:id", (req, res) => {
     })
 })
 
-
-// let nums = [4, 5, 6, 7, 8, 90, 5, 3, 5, 6]
-
-// let filteredNum = nums.filter((num) => {
-//     if(num == 5){
-//         return num
-//     }
-// })
-
-// console.log(filteredNum);
 
 module.exports = router;
